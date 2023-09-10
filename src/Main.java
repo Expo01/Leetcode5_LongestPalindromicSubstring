@@ -24,7 +24,7 @@ class Solution {
                 end = i + (len / 2); // same for R
             }
         }
-        return s.substring(start,end+1); // +1 since non-inclusive
+        return s.substring(start,end+1); // +1 since non-inclusive.
     }
 
     public int expandFromMiddle(String s, int left, int right) {
