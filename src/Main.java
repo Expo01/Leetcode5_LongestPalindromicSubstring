@@ -18,10 +18,13 @@ class Solution {
             int len1 = expandFromMiddle(s, i, i); // for odd length palindrome (which could be of an odd or even string)
             int len2 = expandFromMiddle(s, i, i + 1); // for even palindrome, identifying 2 center chars
             int len = Math.max(len1, len2); // return greater
-            if (len > end - start) { // if length greater than current longest substring length, replace
+            if (len > end - start+1) { // if length greater than current longest substring length, replace
+                // updated this code to include +1 to be more accurate. if len = 3 and end - start is 4-2 gives impression
+                // that currnt len is greatr, but it really just replaces if new substring is >= than end-start and not just
+                // only if >
                 start = i - ((len - 1) / 2); // utilize knowledge of center/start index and length where (len-1)
                 // suppose i = 3 for len of 5.  5-1 -> 4/2 = 2.  start = 3-2 = 1. the '-1' is len-1 is there to prevent OOB
-                end = i + (len / 2); // same for R
+                end = i + (len / 2); // same for R.
             }
         }
         return s.substring(start,end+1); // +1 since non-inclusive.
